@@ -11,7 +11,7 @@ library(htmlwidgets)
 library(htmltools)
 library(tesseract)
 
-t1 <- read.csv("data/original/m5w-xmpx-wobv.csv") # 170k
+t1 <- read.csv("../../data/original/m5w-xmpx-wobv.csv") # 170k
 t2 <- t1[which(t1$Organization.Name != ""),]
 t3 <- t2[which(nchar(t2$Organization.Name) > 12),] # quick and imprecise... down to ~ n=380
 
@@ -35,8 +35,8 @@ t3$CommentPDF2 <- t3$CommentPDF1 <- NA
 for(i in 1:nrow(t3)){
   if(!is.na(t3$pdfAttachment[i])){
     url <- t3$pdfAttachment[i]
-    fname <- paste0("data/processed/text files/pdfs/",t3$Document.ID[i],".pdf")
-    download.file(url, destfile = paste0("data/processed/text files/pdfs/",t3$Document.ID[i],".pdf"), mode = "wb",quiet = T)
+    fname <- paste0("../../data/processed/text files/pdfs/",t3$Document.ID[i],".pdf")
+    download.file(url, destfile = paste0("../../data/processed/text files/pdfs/",t3$Document.ID[i],".pdf"), mode = "wb",quiet = T)
     
     txt <- paste(pdftools::pdf_text(fname),collapse = "\n")
     if(nchar(txt)>100){ # 100? maybe higher or lower
@@ -55,8 +55,8 @@ for(i in 1:nrow(t3)){
     }
     if(!is.na(t3$pdfAttachment2[i])){
       url <- t3$pdfAttachment2[i]
-      fname <- paste0("data/processed/text files/pdfs/",t3$Document.ID[i],".pdf")
-      download.file(url, destfile = paste0("data/processed/text files/pdfs/",t3$Document.ID[i],".pdf"), mode = "wb",quiet = T)
+      fname <- paste0("../../data/processed/text files/pdfs/",t3$Document.ID[i],".pdf")
+      download.file(url, destfile = paste0("../../data/processed/text files/pdfs/",t3$Document.ID[i],".pdf"), mode = "wb",quiet = T)
       
       txt <- paste(pdftools::pdf_text(fname),collapse = "\n")
       if(nchar(txt)>100){ # 100? maybe higher or lower
@@ -92,7 +92,7 @@ tdf <- t4
 
 # save -----
 
-saveRDS(tdf, "data/processed/tdf.rds")
+saveRDS(tdf, "../../data/processed/tdf.rds")
 
 # -----
 

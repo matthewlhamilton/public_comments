@@ -8,7 +8,7 @@ library(network)
 library(networkD3)
 library(jsonlite)
 
-tdf <- readRDS("data/processed/tdf.rds")
+tdf <- readRDS("../../data/processed/tdf.rds")
 
 
 # ---- 
@@ -94,7 +94,7 @@ for(i in 1:nrow(tdf)){
   cat("\r",i)
 }
 
-saveRDS(tdf,"data/processed/tdf.rds")
+saveRDS(tdf,"../../data/processed/tdf.rds")
 
 setwd("outputs/test/inspect networks output")
 
